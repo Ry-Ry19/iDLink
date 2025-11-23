@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  BarChart3,
+  CheckCircle,
+  Clock,
   FileText,
   RefreshCw,
-  BarChart3,
   Shield,
-  Clock,
-  CheckCircle,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const features = [
@@ -138,6 +138,10 @@ const Landing = () => {
           <Button size="lg" variant="secondary" asChild className="gradient-gold text-accent-foreground font-semibold">
             <Link to="/apply">Apply Now</Link>
           </Button>
+          <Button size="lg" variant="outline" asChild className="bg-white/10 border-white/30 text-primary-foreground hover:bg-white/20">
+            <Link to="/team">Meet the Team</Link>
+          </Button>
+
         </div>
       </section>
 

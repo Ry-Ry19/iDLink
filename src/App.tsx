@@ -1,20 +1,22 @@
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ApplyForID from "./pages/ApplyForID";
+import ContractExpiration from "./pages/ContractExpiration";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
-import StudentDashboard from "./pages/StudentDashboard";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
-import StaffDashboard from "./pages/StaffDashboard";
-import ApplyForID from "./pages/ApplyForID";
-import RevalidateID from "./pages/RevalidateID";
-import TrackStatus from "./pages/TrackStatus";
-import ContractExpiration from "./pages/ContractExpiration";
-import ReviewApplication from "./pages/ReviewApplication";
-import RecordsManagement from "./pages/RecordsManagement";
 import NotFound from "./pages/NotFound";
+import RecordsManagement from "./pages/RecordsManagement";
+import RevalidateID from "./pages/RevalidateID";
+import ReviewApplication from "./pages/ReviewApplication";
+import StaffDashboard from "./pages/StaffDashboard";
+import StudentDashboard from "./pages/StudentDashboard";
+import Team from "./pages/Team";
+import TrackStatus from "./pages/TrackStatus";
+
 
 const queryClient = new QueryClient();
 
@@ -48,6 +50,10 @@ const App = () => (
           
           {/* 404 Route */}
           <Route path="*" element={<NotFound />} />
+
+          {/* Team Members */}
+          <Route path="/team" element={<Team />} />
+
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
