@@ -1,14 +1,27 @@
-import { useNavigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import DashboardCard from "@/components/DashboardCard";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import StatusBadge from "@/components/StatusBadge";
-import { FileText, RefreshCw, BarChart3, Bell, Calendar } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3, Bell, Calendar, FileText, RefreshCw } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
+
+  const [userName, setUserName] = useState("");
+  const [userRole, setUserRole] = useState<"student" | "employee" | "staff" | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsed = JSON.parse(storedUser);
+      setUserName(parsed.fullname);
+      setUserRole(parsed.role);
+    }
+  }, []);
 
   const recentApplications = [
     { id: "APP101", type: "New ID", status: "approved" as const, date: "2024-01-12" },
@@ -16,8 +29,9 @@ const EmployeeDashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar isLoggedIn userRole="employee" userName="Maria Santos" />
-      
+      {/* Now using actual logged-in user */}
+      <Navbar isLoggedIn={true} userRole={userRole} userName={userName} />
+
       <main className="flex-1 bg-background">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8">

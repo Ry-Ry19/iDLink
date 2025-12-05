@@ -10,6 +10,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import RecordsManagement from "./pages/RecordsManagement";
+import Register from "./pages/Register";
 import RevalidateID from "./pages/RevalidateID";
 import ReviewApplication from "./pages/ReviewApplication";
 import StaffDashboard from "./pages/StaffDashboard";
@@ -29,6 +30,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/apply" element={<ApplyForID />} />
           <Route path="/revalidate" element={<RevalidateID />} />
           <Route path="/track" element={<TrackStatus />} />

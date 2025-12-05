@@ -1,13 +1,32 @@
-import { useNavigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import DashboardCard from "@/components/DashboardCard";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import StatusBadge from "@/components/StatusBadge";
-import { FileText, RefreshCw, BarChart3, Bell } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3, Bell, FileText, RefreshCw } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+interface User {
+  fullname: string;
+  role: string;
+  idno: string;
+  email: string;
+}
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      // If no user is logged in, redirect to login
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const recentApplications = [
     { id: "APP001", type: "New ID", status: "under_review" as const, date: "2024-01-15" },
@@ -16,13 +35,20 @@ const StudentDashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar isLoggedIn userRole="student" userName="Juan Dela Cruz" />
+      <Navbar
+        isLoggedIn={!!user}
+        userRole={(user?.role as "student" | "employee" | "staff") || "student"}
+        userName={user?.fullname || ""}
+      />
+
       
       <main className="flex-1 bg-background">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">Student Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back! Manage your ID applications here.</p>
+            <p className="text-muted-foreground">
+              Welcome back{user ? `, ${user.fullname}` : ""}! Manage your ID applications here.
+            </p>
           </div>
 
           {/* Quick Actions */}

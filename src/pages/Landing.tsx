@@ -65,10 +65,10 @@ const Landing = () => {
               <Link to="/login">Login</Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-white/10 border-white/30 text-primary-foreground hover:bg-white/20">
-              <Link to="/apply">Apply for ID</Link>
+              <Link to="/login">Apply for ID</Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-white/10 border-white/30 text-primary-foreground hover:bg-white/20">
-              <Link to="/track">Track Status</Link>
+              <Link to="/login">Track Status</Link>
             </Button>
           </div>
         </div>
@@ -136,7 +136,7 @@ const Landing = () => {
             Join thousands of MSU-IIT students and employees using IDLink.
           </p>
           <Button size="lg" variant="secondary" asChild className="gradient-gold text-accent-foreground font-semibold">
-            <Link to="/apply">Apply Now</Link>
+            <Link to="/login">Apply Now</Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="bg-white/10 border-white/30 text-primary-foreground hover:bg-white/20">
             <Link to="/team">Meet the Team</Link>

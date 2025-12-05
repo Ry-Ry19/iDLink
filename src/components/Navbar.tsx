@@ -1,6 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, LogOut, User } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +7,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { GraduationCap, LogOut, User } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   isLoggedIn?: boolean;
@@ -42,7 +42,7 @@ const Navbar = ({ isLoggedIn = false, userRole = null, userName = "" }: NavbarPr
                 <Link to="/login">Login</Link>
               </Button>
               <Button asChild className="gradient-primary text-primary-foreground">
-                <Link to="/apply">Apply for ID</Link>
+                <Link to="/login">Apply for ID</Link>
               </Button>
             </>
           ) : (

@@ -1,10 +1,36 @@
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import StaffSidebar from "@/components/StaffSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, CheckCircle, XCircle, Users } from "lucide-react";
+import { CheckCircle, Clock, Users, XCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StaffDashboard = () => {
+  const navigate = useNavigate();
+
+  const [userName, setUserName] = useState("");
+  const [userRole, setUserRole] = useState<"student" | "employee" | "staff" | null>(null);
+
+  // Load user info from localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
+      navigate("/login");
+      return;
+    }
+
+    const parsed = JSON.parse(storedUser);
+    setUserName(parsed.fullname);
+    setUserRole(parsed.role);
+
+    // ❗ Prevent students/employees from accessing staff dashboard
+    if (parsed.role !== "staff") {
+      navigate("/");
+    }
+  }, [navigate]);
+
   const stats = [
     { title: "Pending Applications", value: "24", icon: Clock, color: "text-warning" },
     { title: "Approved Today", value: "18", icon: CheckCircle, color: "text-success" },
@@ -21,11 +47,11 @@ const StaffDashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar isLoggedIn userRole="staff" userName="Admin User" />
-      
+      <Navbar isLoggedIn userRole={userRole} userName={userName} />
+
       <div className="flex flex-1">
         <StaffSidebar />
-        
+
         <main className="flex-1 bg-background">
           <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
@@ -33,7 +59,7 @@ const StaffDashboard = () => {
               <p className="text-muted-foreground">Monitor and manage ID applications system-wide.</p>
             </div>
 
-            {/* Statistics Cards */}
+            {/* Statistics */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
               {stats.map((stat) => (
                 <Card key={stat.title} className="shadow-card">

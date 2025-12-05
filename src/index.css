@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* ---------------------------
+   Design System - MSU-IIT Theme
+   All colors, gradients, fonts, shadows, and transitions are defined here.
+   Colors are in HSL.
+---------------------------- */
 @layer base {
   :root {
-    /* University Brand Colors - MSU-IIT Theme */
+    /* Brand Colors */
     --background: 0 0% 98%;
     --foreground: 0 0% 15%;
 
@@ -18,7 +19,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 15%;
 
-    /* Primary: Maroon - University brand color */
+    /* Primary: Maroon */
     --primary: 0 100% 25%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 0 65% 45%;
@@ -32,11 +33,12 @@ All colors MUST be HSL.
     --muted: 0 0% 95%;
     --muted-foreground: 0 0% 45%;
 
-    /* Accent: Gold - University accent */
+    /* Accent: Gold */
     --accent: 43 69% 53%;
     --accent-foreground: 0 0% 15%;
     --accent-light: 43 75% 65%;
 
+    /* Feedback Colors */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
@@ -49,10 +51,12 @@ All colors MUST be HSL.
     --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
 
+    /* Borders & Inputs */
     --border: 0 0% 90%;
     --input: 0 0% 90%;
     --ring: 0 100% 25%;
 
+    /* Radius */
     --radius: 0.75rem;
 
     /* Gradients */
@@ -81,23 +85,27 @@ All colors MUST be HSL.
     --sidebar-border: 0 100% 20%;
     --sidebar-ring: 43 69% 53%;
   }
-}
 
-@layer base {
+  /* Global Reset & Base Styles */
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    font-weight: 600;
+    letter-spacing: -0.02em; /* approximate Tailwind tracking-tight */
   }
 }
 
 @layer utilities {
+  /* Gradients */
   .gradient-primary {
     background: var(--gradient-primary);
   }
@@ -110,6 +118,7 @@ All colors MUST be HSL.
     background: var(--gradient-hero);
   }
 
+  /* Shadows */
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
@@ -118,6 +127,7 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-hover);
   }
 
+  /* Transitions */
   .transition-base {
     transition: var(--transition-base);
   }

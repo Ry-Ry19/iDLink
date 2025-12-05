@@ -1,5 +1,5 @@
+import { GraduationCap, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -20,17 +20,17 @@ const Footer = () => {
             <h3 className="mb-3 font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/apply" className="text-muted-foreground hover:text-primary transition-base">
+                <Link to="/login" className="text-muted-foreground hover:text-primary transition-base">
                   Apply for ID
                 </Link>
               </li>
               <li>
-                <Link to="/revalidate" className="text-muted-foreground hover:text-primary transition-base">
+                <Link to="/login" className="text-muted-foreground hover:text-primary transition-base">
                   Revalidate ID
                 </Link>
               </li>
               <li>
-                <Link to="/track" className="text-muted-foreground hover:text-primary transition-base">
+                <Link to="/login" className="text-muted-foreground hover:text-primary transition-base">
                   Track Status
                 </Link>
               </li>
